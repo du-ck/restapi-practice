@@ -68,6 +68,8 @@ public class CompanyController {
                 .error(ErrorResponse.createDefault())
                 .status(HttpStatus.BAD_REQUEST)
                 .data(null).build();
+        userId = userId.trim();
+        companyName = companyName.trim();
 
         if (!StringUtils.hasText(userId)) {
             throw new MissingParameterException("아이디를 입력해주세요");
@@ -85,7 +87,7 @@ public class CompanyController {
         if (!userService.getUserAuth(userId).equalsIgnoreCase("admin")) {
             throw new UnauthorizedAccessException("권한이 없습니다");
         }
-        List<SearchCompanyListDTO> resultList = companyService.getCompanyListWithUsers(companyName, pageRequest);
+        List<SearchCompanyListDTO> resultList = companyService.getCompanyListWithUsers(companyName.trim(), pageRequest);
         if (CollectionUtils.isEmpty(resultList)) {
             throw new ResultNotFoundException("데이터가 없습니다");
         }
@@ -110,6 +112,8 @@ public class CompanyController {
                 .error(ErrorResponse.createDefault())
                 .status(HttpStatus.BAD_REQUEST)
                 .data(null).build();
+        userId = userId.trim();
+        companyGroupNumber = companyGroupNumber.trim();
 
         if (!StringUtils.hasText(userId)) {
             throw new MissingParameterException("아이디를 입력해주세요");
