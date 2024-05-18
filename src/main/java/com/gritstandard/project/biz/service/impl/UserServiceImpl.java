@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO getUserInfo(UserDTO user) {
         Optional<Users> findUser = userRepository.findByLoginIdAndPasswordAndGroupNumber(user.getLoginId(), user.getPassword(), user.getGroupNumber());
-        if (findUser.isPresent()) {
+        if (findUser.isPresent()) { 
             UserDTO userInfo = UserDTO.toDTO(findUser.get());
             if (userInfo != null) {
                 return userInfo;
