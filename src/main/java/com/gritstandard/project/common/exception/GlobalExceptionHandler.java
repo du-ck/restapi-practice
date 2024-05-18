@@ -83,11 +83,6 @@ public class GlobalExceptionHandler {
     }
 
 
-    /**
-     * Required = true 인 파라미터의 value 가 안들어왔을 경우
-     * @param e
-     * @return
-     */
     @ExceptionHandler(MissingParameterException.class)
     public ResponseEntity<Object> handleMissingParameter(MissingParameterException e) {
         ResponseData responseData = ResponseData.builder()
@@ -103,11 +98,6 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(responseData);
     }
 
-    /**
-     * 권한이 필요한 api 요청 시 권한이 없을 경우
-     * @param e
-     * @return
-     */
     @ExceptionHandler(UnauthorizedAccessException.class)
     public ResponseEntity<Object> handleUnauthorizedAccess(UnauthorizedAccessException e) {
         ResponseData responseData = ResponseData.builder()
@@ -123,11 +113,6 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(responseData);
     }
 
-    /**
-     * 조회 결과가 없을 경우
-     * @param e
-     * @return
-     */
     @ExceptionHandler(ResultNotFoundException.class)
     public ResponseEntity<Object> handleResultNotFound(ResultNotFoundException e) {
         ResponseData responseData = ResponseData.builder()

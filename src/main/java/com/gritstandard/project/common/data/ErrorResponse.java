@@ -2,6 +2,9 @@ package com.gritstandard.project.common.data;
 
 import lombok.*;
 
+/**
+ * Error Response 를 담기 위한 클래스
+ */
 @Getter
 @Setter
 @NoArgsConstructor
